@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 
 export const ModeSwitch = () => {
   const [darkMode, setDarkMode] = useState(localStorage.getItem("theme") === "dark");
+
+  // Sync theme on mount
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");
@@ -11,14 +13,29 @@ export const ModeSwitch = () => {
       localStorage.setItem("theme", "light");
     }
   }, [darkMode]);
+
   return (
-    <div>
-      <button
-        className="mt-4 px-4 py-2 bg-primary text-white rounded-md"
-        onClick={() => setDarkMode(!darkMode)}
-      >
-        {darkMode ? "Switch to Light Mode" : "Switch to Dark Mode"}
-      </button>
-    </div>
+    <label className="flex items-center cursor-pointer">
+      {/* Hidden checkbox that controls the toggle */}
+      <input
+        type="checkbox"
+        className="sr-only peer"
+        checked={darkMode}
+        onChange={() => setDarkMode(!darkMode)}
+      />
+
+      {/* Toggle Background */}
+      <div className="relative w-12 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-500 transition">
+        {/* Toggle Circle */}
+        <div
+          className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform ${darkMode ? "translate-x-6" : "translate-x-0"}`}
+        ></div>
+      </div>
+
+      {/* Label Text */}
+      <span className="ml-3 text-gray-700 dark:text-gray-300">
+        {darkMode ? "Dark Mode" : "Light Mode"}
+      </span>
+    </label>
   );
 };

@@ -1,4 +1,4 @@
-import { List, Grid } from "lucide-react";
+import { List, LayoutGrid as Grid } from "lucide-react";
 
 interface ViewSwitchProps {
   isListView: boolean;

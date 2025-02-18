@@ -1,18 +1,7 @@
 import React from "react";
+import { Company } from "../types/types";
 
-interface CompanyCardProps {
-  name: string;
-  country: string;
-  industry: string;
-  numberOfEmployees: number;
-}
-
-export const CompanyCard: React.FC<CompanyCardProps> = ({
-  name,
-  country,
-  industry,
-  numberOfEmployees,
-}) => {
+export const CompanyCard: React.FC<Company> = ({ name, country, industry, numberOfEmployees }) => {
   return (
     <div className="shadow-md rounded-xl hover:shadow-lg flex flex-col items-center justify-between text-center text-balance overflow-hidden">
       <div className="flex flex-col items-center gap-3 w-full bg-blue-950 py-4 px-2">

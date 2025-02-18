@@ -125,6 +125,10 @@ The data structure is as follows:
 - Users can sort by name (A-Z, Z-A) or numberOfEmployees (ascending, descending).
 - Sorting persists when filters are changed.
 
+# Useful resources and general notes
+
+1. While setting up Tailwind in the project, I noticed that [Tailwind](https://tailwindcss.com/) introduced a new major version 4, which changed many things. Because I was pressed for time I decided to use the version I'm more familiar with, which is version 3.
+
 # Deployment
 
 The app is deployed on Vercel:
@@ -145,4 +149,3 @@ The app is deployed on Vercel:
 📧 your.email@example.com
 
 🔗 GitHub Profile
-

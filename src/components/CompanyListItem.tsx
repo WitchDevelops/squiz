@@ -9,17 +9,19 @@ export const CompanyListItem: React.FC<Company> = ({
   numberOfEmployees,
 }) => {
   return (
-    <div className="flex items-center gap-2">
-      <Building2 size={20} />
-      <div className="flex flex-col w-full">
-        <div className="flex justify-between w-full">
-          <p>{name}</p>
-          <p>{country}</p>
-        </div>
-
-        <p>{industry}</p>
-        <p>Total Employees: {numberOfEmployees}</p>
+    <div className="company-list-item">
+      <div className="mx-auto">
+        <Building2 size={30} />
       </div>
+
+      <div className="company-list-item__content">
+        <p className="company-list-item__name">{name}</p>
+        <p className="company-list-item__industry" title={industry}>
+          {industry}
+        </p>
+        <p>Employees: {numberOfEmployees}</p>
+      </div>
+      <p className="company-list-items__country">{country}</p>
     </div>
   );
 };

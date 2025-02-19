@@ -33,6 +33,8 @@ const App = () => {
         )
       ) : error ? (
         <APIError error={error} />
+      ) : data.length === 0 ? (
+        <p>No data found.</p>
       ) : isListView ? (
         <ListView data={data} />
       ) : (

@@ -11,7 +11,7 @@ export const CompanyListItem: React.FC<Company> = ({
   return (
     <div className="company-list-item">
       <div className="mx-auto">
-        <Building2 size={30} />
+        <Building2 size={30} color="var(--color-primary)" />
       </div>
 
       <div className="company-list-item__content">

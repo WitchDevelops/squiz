@@ -9,7 +9,7 @@ export const ViewSwitch = ({ isListView, onToggle }: ViewSwitchProps) => {
   return (
     <div className="flex items-center space-x-2">
       <button
-        className="p-2 rounded-md bg-gray-200 hover:bg-gray-300 active:bg-gray-300 focus:outline-2 focus:outline-offset-2 focus:outline-primary"
+        className="p-2 rounded-md bg-slate-50 shadow-md hover:bg-slate-200 active:bg-slate-300 focus:outline-2 focus:outline-offset-2 focus:outline-primary"
         onClick={onToggle}
       >
         {isListView ? <Grid size={20} /> : <List size={20} />}

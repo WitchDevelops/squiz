@@ -43,3 +43,12 @@
 .company-card-item__info-container {
   @apply flex w-full justify-around;
 }
+
+.refresh-btn {
+  @apply bg-background outline-2 outline-offset-2 outline-primary p-2 rounded-md flex items-center gap-2 hover:bg-slate-50 active:bg-slate-200 transition-all duration-300;
+  outline: 1px solid var(--color-text);
+}
+
+.refresh-btn:hover svg {
+  @apply animate-spin;
+}

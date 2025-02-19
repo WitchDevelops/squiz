@@ -1,9 +1,9 @@
 import { useState } from "react";
-import { CompanyCard } from "./components/CompanyCard";
-import { useCompanyData } from "./hooks/useCompanyData";
-import { ViewSwitch } from "./components/ViewSwitch";
-import { CompanyListItem } from "./components/CompanyListItem";
-import "./App.css";
+import { CompanyCard } from "@/components/CompanyCard";
+import { useCompanyData } from "@/hooks/useCompanyData";
+import { ViewSwitch } from "@/components/ViewSwitch";
+import { CompanyListItem } from "@/components/CompanyListItem";
+import "@/App.css";
 
 const App = () => {
   const { data = [], isLoading, error } = useCompanyData();

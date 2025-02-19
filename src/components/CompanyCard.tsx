@@ -1,6 +1,6 @@
 import React from "react";
-import { Company } from "../types/types";
 import { Building2 } from "lucide-react";
+import { Company } from "@/types/types";
 
 export const CompanyCard: React.FC<Company> = ({ name, country, industry, numberOfEmployees }) => {
   return (

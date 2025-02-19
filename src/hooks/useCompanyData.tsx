@@ -1,4 +1,4 @@
-import { useData } from "./useData";
-import { CompanyResponse } from "../types/types";
+import { useData } from "@/hooks/useData";
+import { CompanyResponse } from "@/types/types";
 
 export const useCompanyData = () => useData<CompanyResponse>("data");

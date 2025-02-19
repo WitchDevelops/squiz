@@ -1,13 +1,23 @@
-import { useState } from "react";
-import { CompanyCard } from "@/components/CompanyCard";
+import { useState, useEffect } from "react";
 import { useCompanyData } from "@/hooks/useCompanyData";
 import { ViewSwitch } from "@/components/ViewSwitch";
-import { CompanyListItem } from "@/components/CompanyListItem";
+import { ListView } from "@/components/ListView";
+import { GridView } from "@/components/GridView";
+import { ListSkeleton } from "@/components/ListSkeleton";
+import { GridSkeleton } from "@/components/GridSkeleton";
+import { APIError } from "@/components/APIError";
+
 import "@/App.css";
 
 const App = () => {
   const { data = [], isLoading, error } = useCompanyData();
-  const [isListView, setIsListView] = useState(true);
+  const [isListView, setIsListView] = useState(() => {
+    return JSON.parse(localStorage.getItem("isListView") ?? "true");
+  });
+
+  useEffect(() => {
+    localStorage.setItem("isListView", JSON.stringify(isListView));
+  }, [isListView]);
 
   return (
     <div className="h-[100vh] bg-background text-foreground p-4 w-[90vw] max-w-[992px] mx-auto">
@@ -16,25 +26,19 @@ const App = () => {
       </div>
 
       {isLoading ? (
-        <p>Loading...</p>
+        isListView ? (
+          <ListSkeleton />
+        ) : (
+          <GridSkeleton />
+        )
       ) : error ? (
-        <p>Error: {error}</p>
+        <APIError error={error} />
+      ) : data.length === 0 ? (
+        <p>No data found.</p>
       ) : isListView ? (
-        <ul className="flex flex-col gap-6">
-          {data.map((data) => (
-            <li key={data.id}>
-              <CompanyListItem {...data} />
-            </li>
-          ))}
-        </ul>
+        <ListView data={data} />
       ) : (
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {data.map((data) => (
-            <li key={data.id}>
-              <CompanyCard {...data} />
-            </li>
-          ))}
-        </ul>
+        <GridView data={data} />
       )}
     </div>
   );

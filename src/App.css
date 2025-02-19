@@ -1,0 +1,45 @@
+.company-list-item {
+  @apply grid gap-2 w-full overflow-hidden h-full p-3 bg-slate-50 rounded-lg shadow-md items-center hover:bg-slate-200 hover:shadow-lg transition-colors duration-300;
+  grid-template-columns: 40px minmax(calc(100% - 40px - 80px - 24px), 1fr) 80px;
+  @media (min-width: 768px) {
+    grid-template-columns: 40px 4fr 1fr;
+  }
+}
+
+.company-list-item__content {
+  @apply flex flex-col gap-2 w-full text-ellipsis md:grid md:items-center;
+  @media (min-width: 768px) {
+    grid-template-columns: 150px 1fr 1fr;
+  }
+}
+
+.company-list-item__name,
+.company-card-item__name {
+  @apply text-xl font-bold;
+}
+
+.company-list-item__industry,
+.company-card-item__industry {
+  @apply text-ellipsis overflow-hidden line-clamp-2 uppercase text-sm md:line-clamp-1;
+}
+
+.company-list-item__country {
+  @apply text-center text-ellipsis md:text-left;
+}
+
+.company-card-item {
+  @apply flex flex-col gap-3 w-full text-center overflow-hidden h-full p-4 bg-slate-50 rounded-lg shadow-md items-center hover:bg-slate-200 hover:shadow-lg transition-colors duration-300;
+}
+
+.company-card-item__country,
+.company-card-item__employees {
+  @apply text-center font-bold;
+}
+
+.company-card-item__info {
+  @apply flex flex-col items-center gap-1 text-center w-[50%];
+}
+
+.company-card-item__info-container {
+  @apply flex w-full justify-around;
+}

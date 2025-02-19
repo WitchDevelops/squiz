@@ -3,6 +3,8 @@ import { CompanyCard } from "@/components/CompanyCard";
 import { useCompanyData } from "@/hooks/useCompanyData";
 import { ViewSwitch } from "@/components/ViewSwitch";
 import { CompanyListItem } from "@/components/CompanyListItem";
+import { ListView } from "@/components/ListView";
+import { GridView } from "@/components/GridView";
 import "@/App.css";
 
 const App = () => {
@@ -20,21 +22,9 @@ const App = () => {
       ) : error ? (
         <p>Error: {error}</p>
       ) : isListView ? (
-        <ul className="flex flex-col gap-6">
-          {data.map((data) => (
-            <li key={data.id}>
-              <CompanyListItem {...data} />
-            </li>
-          ))}
-        </ul>
+        <ListView data={data} />
       ) : (
-        <ul className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
-          {data.map((data) => (
-            <li key={data.id}>
-              <CompanyCard {...data} />
-            </li>
-          ))}
-        </ul>
+        <GridView data={data} />
       )}
     </div>
   );

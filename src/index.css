@@ -5,17 +5,32 @@
 /* Light mode (default) */
 :root {
   --color-bg: #ffffff;
-  --color-text: #213547;
+  --color-text: #474554;
   --color-primary: #646cff;
+  --color-primary-hover: #555dfe;
+  --color-primary-active: #323dff;
+  --color-accent: #009a68;
+  --color-accent-hover: #00aa72;
+  --color-accent-active: #00885b;
 }
 
 /* Dark mode */
 .dark {
   --color-bg: #242424;
-  --color-text: rgba(255, 255, 255, 0.87);
-  --color-primary: #535bf2;
+  --color-text: #faf8ff;
+  --color-primary: #8685ef;
+  --color-primary-hover: #6968eb;
+  --color-primary-active: #4c4ae7;
+  --color-accent: #2cacbd;
+  --color-accent-hover: #59c9d8;
+  --color-accent-active: #3dc0d2;
 }
 
 body {
   @apply bg-background text-foreground transition-colors duration-300;
+}
+
+::selection {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
 }

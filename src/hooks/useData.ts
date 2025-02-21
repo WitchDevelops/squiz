@@ -6,7 +6,7 @@ import apiClient from "@/services/httpClient";
 export const useData = <T>(
   endpoint: string,
   requestConfig?: AxiosRequestConfig,
-  deps?: unknown[]
+  dependencies?: unknown[]
 ) => {
   const [data, setData] = useState<T[]>([]);
   const [error, setError] = useState<string | null>(null);
@@ -23,7 +23,6 @@ export const useData = <T>(
         })
         .then((response) => {
           setData(response.data);
-          console.log(response.data);
           setIsLoading(false);
         })
         .catch((error) => {
@@ -35,7 +34,7 @@ export const useData = <T>(
         controller.abort();
       };
     },
-    deps ? [...deps] : []
+    dependencies ? [...dependencies] : []
   );
 
   return { data, error, isLoading };

@@ -5,9 +5,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--color-bg)", // Fixes bg-background
-        foreground: "var(--color-text)", // Fixes text-foreground
-        primary: "var(--color-primary)", // Fixes bg-primary
+        background: "var(--color-bg)",
+        foreground: "var(--color-text)",
+        primary: "var(--color-primary)",
+        primaryHover: "var(--color-primary-hover)",
+        primaryActive: "var(--color-primary-active)",
+        accent: "var(--color-accent)",
+        accentHover: "var(--color-accent-hover)",
+        accentActive: "var(--color-accent-active)",
       },
     },
   },

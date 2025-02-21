@@ -18,8 +18,8 @@ export const FilterAndSortControls: React.FC<FilterAndSortControlsProps> = ({
   availableIndustries,
 }) => {
   return (
-    <div className="flex flex-col lg:flex-row gap-2 mb-4 justify-between">
-      <div className="flex flex-col md:flex-row  gap-2">
+    <div className="flex flex-col gap-3 mb-6 ">
+      <div className="flex flex-col gap-3">
         <select
           className="filter-sort-option"
           value={filters.country}
@@ -53,7 +53,7 @@ export const FilterAndSortControls: React.FC<FilterAndSortControlsProps> = ({
           <option value="numberOfEmployees">Sort by Employees</option>
         </select>
       </div>
-      <div className="flex gap-2">
+      <div className="flex lg:flex-col gap-3">
         <button
           className="sortDir-button"
           onClick={() => setSortOrder({ ...sortOrder, ascending: !sortOrder.ascending })}

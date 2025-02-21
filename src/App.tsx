@@ -27,12 +27,12 @@ const App = () => {
   }, [isListView]);
 
   return (
-    <div className="h-[100vh] bg-background text-foreground p-4 w-[90vw] max-w-[992px] mx-auto">
+    <div className="h-[100vh] bg-background text-foreground p-4 w-[90vw] mx-auto lg:w-full lg:p-8 xl:max-w-[1900px]">
       <div className="flex justify-end gap-2 mb-4">
         <ModeSwitch />
         <ViewSwitch isListView={isListView} onToggle={() => setIsListView(!isListView)} />
       </div>
-      <div>
+      <div className="flex flex-col lg:flex-row lg:gap-6 xl:gap-8 lg:py-6">
         <FilterAndSortControls
           filters={filters}
           setFilters={setFilters}
@@ -41,23 +41,22 @@ const App = () => {
           availableCountries={availableCountries}
           availableIndustries={availableIndustries}
         />
-      </div>
-
-      {isLoading ? (
-        isListView ? (
-          <ListSkeleton />
+        {isLoading ? (
+          isListView ? (
+            <ListSkeleton />
+          ) : (
+            <GridSkeleton />
+          )
+        ) : error ? (
+          <APIError error={error} />
+        ) : filteredAndSortedData.length === 0 ? (
+          <p>No data found.</p>
+        ) : isListView ? (
+          <ListView data={filteredAndSortedData} />
         ) : (
-          <GridSkeleton />
-        )
-      ) : error ? (
-        <APIError error={error} />
-      ) : filteredAndSortedData.length === 0 ? (
-        <p>No data found.</p>
-      ) : isListView ? (
-        <ListView data={filteredAndSortedData} />
-      ) : (
-        <GridView data={filteredAndSortedData} />
-      )}
+          <GridView data={filteredAndSortedData} />
+        )}
+      </div>
     </div>
   );
 };

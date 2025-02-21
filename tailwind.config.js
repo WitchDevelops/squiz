@@ -5,9 +5,9 @@ export default {
   theme: {
     extend: {
       colors: {
-        background: "var(--color-bg)", // Fixes bg-background
-        foreground: "var(--color-text)", // Fixes text-foreground
-        primary: "var(--color-primary)", // Fixes bg-primary
+        background: "var(--color-bg)",
+        foreground: "var(--color-text)",
+        primary: "var(--color-primary)",
       },
     },
   },

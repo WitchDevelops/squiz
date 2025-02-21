@@ -7,13 +7,13 @@
   --color-bg: #ffffff;
   --color-text: #213547;
   --color-primary: #646cff;
+
 }
 
 /* Dark mode */
 .dark {
   --color-bg: #242424;
   --color-text: rgba(255, 255, 255, 0.87);
-  --color-primary: #535bf2;
 }
 
 body {

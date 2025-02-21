@@ -24,15 +24,12 @@ export const ModeSwitch = () => {
         onChange={() => setDarkMode(!darkMode)}
       />
 
-      {/* Toggle Background */}
-      <div className="relative w-12 h-6 bg-gray-300 rounded-full peer-checked:bg-blue-500 transition">
-        {/* Toggle Circle */}
+      <div className="relative w-12 h-6 bg-gray-300 rounded-full peer-checked:bg-primary transition">
         <div
           className={`absolute top-1 left-1 w-4 h-4 bg-white rounded-full transition-transform ${darkMode ? "translate-x-6" : "translate-x-0"}`}
         ></div>
       </div>
 
-      {/* Label Text */}
       <span className="ml-3 text-gray-700 dark:text-gray-300">
         {darkMode ? "Dark Mode" : "Light Mode"}
       </span>

@@ -7,7 +7,8 @@ import { GridView } from "@/components/GridView";
 import { ListSkeleton } from "@/components/ListSkeleton";
 import { GridSkeleton } from "@/components/GridSkeleton";
 import { APIError } from "@/components/APIError";
-import { FilterAndSortControls, filterAndSortData } from "@/components/FilterAndSortControls";
+import { FilterAndSortControls } from "@/components/FilterAndSortControls";
+import { filterAndSortData } from "@/utils/filterAndSort";
 import "@/App.css";
 
 const App = () => {

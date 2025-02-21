@@ -11,6 +11,8 @@ export default {
         primaryHover: "var(--color-primary-hover)",
         primaryActive: "var(--color-primary-active)",
         accent: "var(--color-accent)",
+        accentHover: "var(--color-accent-hover)",
+        accentActive: "var(--color-accent-active)",
       },
     },
   },

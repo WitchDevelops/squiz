@@ -1,5 +1,5 @@
 .company-list-item {
-  @apply grid gap-2 w-full overflow-hidden h-full p-3 bg-slate-50 dark:bg-slate-700 rounded-lg shadow-md items-center hover:bg-slate-200 dark:hover:bg-slate-600 hover:shadow-lg transition-colors duration-300;
+  @apply grid gap-2 w-full overflow-hidden h-full p-3 bg-slate-50 dark:bg-[#3a3847] rounded-lg shadow-md items-center hover:bg-slate-200 dark:hover:bg-[#2e2c39] hover:shadow-lg transition-colors duration-300;
   grid-template-columns: 40px minmax(calc(100% - 40px - 80px - 24px), 1fr) 80px;
   @media (min-width: 768px) {
     grid-template-columns: 40px 4fr 1fr;
@@ -54,5 +54,13 @@
 }
 
 .filter-sort-option {
-  @apply p-2 rounded-md border dark:bg-slate-800 dark:border-slate-600 w-full text-ellipsis overflow-hidden
+  @apply p-2 rounded-md border dark:bg-[#2e2c39] dark:border-[#7d7897] w-full text-ellipsis overflow-hidden;
+}
+
+.sortDir-button {
+  @apply flex-1 p-2 bg-primary hover:bg-primaryHover active:bg-primaryActive text-white rounded-md;
+}
+
+.clear-button {
+  @apply flex-1 p-2 bg-accent hover:bg-accentHover active:bg-accentActive text-white rounded-md;
 }

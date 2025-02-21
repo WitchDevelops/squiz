@@ -1,25 +1,14 @@
-import { useState } from "react";
+import { FiltersType, SortOrderType } from "@/types/types";
 
-export const filterAndSortData = (data, filters, sortOrder) => {
-  return data
-    .filter(
-      (item) =>
-        (!filters.country || item.country === filters.country) &&
-        (!filters.industry || item.industry === filters.industry)
-    )
-    .sort((a, b) => {
-      if (sortOrder.key === "name") {
-        return sortOrder.ascending ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
-      } else if (sortOrder.key === "numberOfEmployees") {
-        return sortOrder.ascending
-          ? a.numberOfEmployees - b.numberOfEmployees
-          : b.numberOfEmployees - a.numberOfEmployees;
-      }
-      return 0;
-    });
-};
-
-export const FilterAndSortControls = ({
+interface FilterAndSortControlsProps {
+  filters: FiltersType;
+  setFilters: (filters: FiltersType) => void;
+  sortOrder: SortOrderType;
+  setSortOrder: (sortOrder: SortOrderType) => void;
+  availableCountries: string[];
+  availableIndustries: string[];
+}
+export const FilterAndSortControls: React.FC<FilterAndSortControlsProps> = ({
   filters,
   setFilters,
   sortOrder,
@@ -65,15 +54,12 @@ export const FilterAndSortControls = ({
       </div>
       <div className="flex gap-2">
         <button
-          className="flex-1 p-2 bg-primary hover:bg-primaryHover active:bg-primaryActive text-white rounded-md"
+          className="sortDir-button"
           onClick={() => setSortOrder({ ...sortOrder, ascending: !sortOrder.ascending })}
         >
           {sortOrder.ascending ? "Ascending" : "Descending"}
         </button>
-        <button
-          className="flex-1 p-2 bg-accent hover:bg-primaryHover active:bg-primaryActive text-white rounded-md"
-          onClick={() => setFilters({ country: "", industry: "" })}
-        >
+        <button className="clear-button" onClick={() => setFilters({ country: "", industry: "" })}>
           Clear
         </button>
       </div>

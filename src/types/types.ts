@@ -7,3 +7,13 @@ export type Company = {
 export interface CompanyResponse extends Company {
   id: number;
 }
+
+export type FiltersType = {
+  country: string;
+  industry: string;
+};
+
+export type SortOrderType = {
+  key: string;
+  ascending: boolean;
+};

@@ -7,6 +7,7 @@ import { GridView } from "@/components/GridView";
 import { ListSkeleton } from "@/components/ListSkeleton";
 import { GridSkeleton } from "@/components/GridSkeleton";
 import { APIError } from "@/components/APIError";
+import { NoDataFound } from "@/components/NoDataFound";
 import { FilterAndSortControls } from "@/components/FilterAndSortControls";
 import { filterAndSortData } from "@/utils/filterAndSort";
 import "@/App.css";
@@ -50,7 +51,7 @@ const App = () => {
         ) : error ? (
           <APIError error={error} />
         ) : filteredAndSortedData.length === 0 ? (
-          <p>No data found.</p>
+          <NoDataFound setFilters={setFilters} />
         ) : isListView ? (
           <ListView data={filteredAndSortedData} />
         ) : (

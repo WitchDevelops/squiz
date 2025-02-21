@@ -1,4 +1,5 @@
 import { FiltersType, SortOrderType } from "@/types/types";
+import { SearchX, ArrowUp, ArrowDown } from "lucide-react";
 
 interface FilterAndSortControlsProps {
   filters: FiltersType;
@@ -57,10 +58,19 @@ export const FilterAndSortControls: React.FC<FilterAndSortControlsProps> = ({
           className="sortDir-button"
           onClick={() => setSortOrder({ ...sortOrder, ascending: !sortOrder.ascending })}
         >
-          {sortOrder.ascending ? "Ascending" : "Descending"}
+          {sortOrder.ascending ? (
+            <>
+              <ArrowUp size={20} /> Ascending
+            </>
+          ) : (
+            <>
+              <ArrowDown size={20} /> Descending
+            </>
+          )}
         </button>
         <button className="clear-button" onClick={() => setFilters({ country: "", industry: "" })}>
-          Clear
+          <SearchX size={20} />
+          Clear filters
         </button>
       </div>
     </div>

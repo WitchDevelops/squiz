@@ -52,3 +52,7 @@
 .refresh-btn:hover svg {
   @apply animate-spin;
 }
+
+.filter-sort-option {
+  @apply p-2 rounded-md border dark:bg-slate-800 dark:border-slate-600 w-full text-ellipsis overflow-hidden
+}

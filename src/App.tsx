@@ -7,12 +7,16 @@ import { GridView } from "@/components/GridView";
 import { ListSkeleton } from "@/components/ListSkeleton";
 import { GridSkeleton } from "@/components/GridSkeleton";
 import { APIError } from "@/components/APIError";
-
+import { FilterAndSortControls, filterAndSortData } from "@/components/FilterAndSortControls";
 import "@/App.css";
 
 const App = () => {
   const { data = [], isLoading, error } = useCompanyData();
-
+  const [filters, setFilters] = useState({ country: "", industry: "" });
+  const availableCountries = [...new Set(data.map((item) => item.country))];
+  const availableIndustries = [...new Set(data.map((item) => item.industry))];
+  const [sortOrder, setSortOrder] = useState({ key: "name", ascending: true });
+  const filteredAndSortedData = filterAndSortData(data, filters, sortOrder);
   const [isListView, setIsListView] = useState(() => {
     return JSON.parse(localStorage.getItem("isListView") ?? "true");
   });
@@ -27,6 +31,16 @@ const App = () => {
         <ModeSwitch />
         <ViewSwitch isListView={isListView} onToggle={() => setIsListView(!isListView)} />
       </div>
+      <div>
+        <FilterAndSortControls
+          filters={filters}
+          setFilters={setFilters}
+          sortOrder={sortOrder}
+          setSortOrder={setSortOrder}
+          availableCountries={availableCountries}
+          availableIndustries={availableIndustries}
+        />
+      </div>
 
       {isLoading ? (
         isListView ? (
@@ -36,12 +50,12 @@ const App = () => {
         )
       ) : error ? (
         <APIError error={error} />
-      ) : data.length === 0 ? (
+      ) : filteredAndSortedData.length === 0 ? (
         <p>No data found.</p>
       ) : isListView ? (
-        <ListView data={data} />
+        <ListView data={filteredAndSortedData} />
       ) : (
-        <GridView data={data} />
+        <GridView data={filteredAndSortedData} />
       )}
     </div>
   );

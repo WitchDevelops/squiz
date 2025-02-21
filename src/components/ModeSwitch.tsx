@@ -4,7 +4,6 @@ import { Moon, Sun } from "lucide-react";
 export const ModeSwitch = () => {
   const [darkMode, setDarkMode] = useState(localStorage.getItem("theme") === "dark");
 
-  // Sync theme on mount
   useEffect(() => {
     if (darkMode) {
       document.documentElement.classList.add("dark");

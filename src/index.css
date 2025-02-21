@@ -7,7 +7,9 @@
   --color-bg: #ffffff;
   --color-text: #213547;
   --color-primary: #646cff;
-
+  --color-primary-hover: #3b82f6;
+  --color-primary-active: #1d4ed8;
+  --color-accent: #b8b894;
 }
 
 /* Dark mode */

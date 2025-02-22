@@ -10,15 +10,25 @@ import { APIError } from "@/components/APIError";
 import { NoDataFound } from "@/components/NoDataFound";
 import { FilterAndSortControls } from "@/components/FilterAndSortControls";
 import { filterAndSortData } from "@/utils/filterAndSort";
+import { useSearchParams } from "react-router-dom";
+import { FiltersType, SortOrderType } from "@/types/types";
 import "@/App.css";
 
 const App = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const { data = [], isLoading, error } = useCompanyData();
-  const [filters, setFilters] = useState({ country: "", industry: "" });
   const availableCountries = [...new Set(data.map((item) => item.country))];
   const availableIndustries = [...new Set(data.map((item) => item.industry))];
-  const [sortOrder, setSortOrder] = useState({ key: "name", ascending: true });
+  const filters = {
+    country: searchParams.get("country") || "",
+    industry: searchParams.get("industry") || "",
+  };
+  const sortOrder = {
+    key: searchParams.get("sortKey") || "name",
+    ascending: searchParams.get("sortOrder") !== "desc", // Default is ascending
+  };
   const filteredAndSortedData = filterAndSortData(data, filters, sortOrder);
+
   const [isListView, setIsListView] = useState(() => {
     return JSON.parse(localStorage.getItem("isListView") ?? "true");
   });
@@ -26,6 +36,15 @@ const App = () => {
   useEffect(() => {
     localStorage.setItem("isListView", JSON.stringify(isListView));
   }, [isListView]);
+
+  const updateSearchParams = (setFilters: FiltersType, setSortOrder: SortOrderType) => {
+    setSearchParams({
+      country: setFilters.country || "",
+      industry: setFilters.industry || "",
+      sortKey: setSortOrder.key,
+      sortOrder: setSortOrder.ascending ? "asc" : "desc",
+    });
+  };
 
   return (
     <div className="h-[100vh] bg-background text-foreground p-4 w-[90vw] mx-auto lg:w-full lg:p-8 xl:max-w-[1900px]">
@@ -36,9 +55,9 @@ const App = () => {
       <div className="flex flex-col lg:flex-row lg:gap-6 xl:gap-8 lg:py-6">
         <FilterAndSortControls
           filters={filters}
-          setFilters={setFilters}
+          setFilters={(newFilters) => updateSearchParams(newFilters, sortOrder)}
           sortOrder={sortOrder}
-          setSortOrder={setSortOrder}
+          setSortOrder={(newSortOrder) => updateSearchParams(filters, newSortOrder)}
           availableCountries={availableCountries}
           availableIndustries={availableIndustries}
         />
@@ -51,7 +70,7 @@ const App = () => {
         ) : error ? (
           <APIError error={error} />
         ) : filteredAndSortedData.length === 0 ? (
-          <NoDataFound setFilters={setFilters} />
+          <NoDataFound setFilters={(newFilters) => updateSearchParams(newFilters, sortOrder)} />
         ) : isListView ? (
           <ListView data={filteredAndSortedData} />
         ) : (

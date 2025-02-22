@@ -298,3 +298,5 @@ This function can be easily expanded if more filters or sorting options were pro
 
 4. I decided to add a 'clear filters' button, because it improves the UX a lot.
 5. I also added switching between list and grid view and mode switcher - because darkmode is awesome. And I had a lot of fun implementing it (did it extend the time I spent on this project? Oh yes it did. By a lot. But as a frontend developer I care about my UI looking nice).
+
+6. I learned a cool thing about `react-router-dom`. Calling `navigate("/")` resets the URL query string without refreshing the page (so, no API call), while `navigate(0)` refreshes the page (which causes an API call). Therefore in the component that pops up when it failed to load the data I used the `navigate(0)` to try to call the API again, but in the empty search results component I used `navigate("/")` under the "Yell at cloud" to just clear the whole URL string ([reference](https://knowyourmeme.com/memes/old-man-yells-at-cloud)).

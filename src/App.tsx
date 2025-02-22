@@ -11,6 +11,7 @@ import { NoDataFound } from "@/components/NoDataFound";
 import { FilterAndSortControls } from "@/components/FilterAndSortControls";
 import { filterAndSortData } from "@/utils/filterAndSort";
 import { useSearchParams } from "react-router-dom";
+import { FiltersType, SortOrderType } from "@/types/types";
 import "@/App.css";
 
 const App = () => {
@@ -36,7 +37,7 @@ const App = () => {
     localStorage.setItem("isListView", JSON.stringify(isListView));
   }, [isListView]);
 
-  const updateSearchParams = (setFilters, setSortOrder) => {
+  const updateSearchParams = (setFilters: FiltersType, setSortOrder: SortOrderType) => {
     setSearchParams({
       country: setFilters.country || "",
       industry: setFilters.industry || "",

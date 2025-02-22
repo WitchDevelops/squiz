@@ -70,7 +70,7 @@ export const FilterAndSortControls: React.FC<FilterAndSortControlsProps> = ({
         </button>
         <button className="clear-button" onClick={() => setFilters({ country: "", industry: "" })}>
           <SearchX size={20} />
-          Clear filters
+          Reset filters
         </button>
       </div>
     </div>

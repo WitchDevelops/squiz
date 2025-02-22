@@ -129,6 +129,8 @@ The data structure is as follows:
 
 1. While setting up Tailwind in the project, I noticed that [Tailwind](https://tailwindcss.com/) introduced a new major version 4, which changed many things. Because I was pressed for time I decided to use the version I'm more familiar with, which is version 3.
 
+2. For the favicon and logo I started with Midjourney, but I wasn't happy with the result and didn't want to spend too much time on it. So I found one on Flaticon.com that seemed good enough and adjusted the colors to fit my chosen color scheme. Attribution: Favicon made by [lutfix](https://www.flaticon.com/authors/lutfix) from [Flaticon](www.flaticon.com).
+
 # Deployment
 
 The app is deployed on Vercel:

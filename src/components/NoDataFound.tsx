@@ -1,9 +1,11 @@
 import { Cloud, SearchX } from "lucide-react";
 import { FiltersType } from "@/types/types";
 import { Tooltip } from "react-tooltip";
+import { useNavigate } from "react-router-dom";
 
 export const NoDataFound = ({ setFilters }: { setFilters: (filters: FiltersType) => void }) => {
-  const handleRefreshPage = () => window.location.reload();
+  const navigate = useNavigate();
+  const handleRefreshPage = () => navigate("/"); // navigates to home without making a new API call
   const handleResetFilters = () => setFilters({ country: "", industry: "" });
 
   return (

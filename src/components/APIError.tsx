@@ -1,8 +1,10 @@
 import { TriangleAlert, RefreshCcw } from "lucide-react";
 import { Tooltip } from "react-tooltip";
+import { useNavigate } from "react-router-dom";
 
 export const APIError = ({ error: error }: { error: string }) => {
-  const handleRefresh = () => window.location.reload();
+  const navigate = useNavigate();
+  const handleRefresh = () => navigate(0); //makes an API call
 
   return (
     <div className="flex-1 min-h-[50vh] flex flex-col gap-4 justify-center items-center">

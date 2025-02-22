@@ -1,3 +1,11 @@
+.list-view {
+  @apply flex flex-col gap-6 flex-1;
+}
+
+.grid-view {
+  @apply grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-6 gap-6 flex-1;
+}
+
 .company-list-item {
   @apply grid gap-2 w-full overflow-hidden h-full p-3 bg-slate-50 dark:bg-[#3a3847] rounded-lg shadow-md items-center hover:bg-slate-200 dark:hover:bg-[#2e2c39] hover:shadow-lg transition-colors duration-300;
   grid-template-columns: 40px minmax(calc(100% - 40px - 80px - 24px), 1fr) 80px;
@@ -28,7 +36,7 @@
 }
 
 .company-card-item {
-  @apply flex flex-col gap-3 w-full text-center overflow-hidden h-full p-4 bg-slate-50 dark:bg-slate-700 rounded-lg shadow-md items-center hover:bg-slate-200 dark:hover:bg-slate-600 hover:shadow-lg transition-colors duration-300;
+  @apply flex flex-col gap-3 w-full text-center overflow-hidden h-full p-4 bg-slate-50 dark:bg-[#3a3847] rounded-lg shadow-md items-center hover:bg-slate-200 dark:hover:bg-[#2e2c39] hover:shadow-lg transition-colors duration-300;
 }
 
 .company-card-item__country,
@@ -45,7 +53,7 @@
 }
 
 .refresh-btn {
-  @apply bg-background outline-2 outline-offset-2 outline-primary p-2 rounded-md flex items-center gap-2 hover:bg-slate-50 active:bg-slate-200 transition-all duration-300;
+  @apply bg-background outline-2 outline-offset-2 outline-primary p-2 rounded-md flex items-center gap-2 hover:bg-slate-50 dark:hover:bg-[#2e2c39] active:bg-slate-200 transition-all duration-300;
   outline: 1px solid var(--color-text);
 }
 
@@ -63,4 +71,8 @@
 
 .clear-button {
   @apply flex-1 p-2 bg-accent hover:bg-accentHover active:bg-accentActive text-white rounded-md flex items-center justify-center gap-1;
+}
+
+.no-results-button {
+  @apply flex-1 w-full max-w-[300px] flex flex-col items-center gap-2 p-4 border border-accent rounded-md hover:bg-slate-50 dark:hover:bg-[#2e2c39];
 }
